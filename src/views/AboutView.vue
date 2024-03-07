@@ -1,8 +1,16 @@
+<script setup lang="ts">
+import Star from '@/components/Star.vue'
+import Shark from '@/components/Shark.vue'
+
+
+</script>
+
 <template>
-  <div >
-    <h1>This is an about page</h1>
+  <div class=" h-[100vh]">
+    <Suspense>
+      <Star />
+    </Suspense>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
