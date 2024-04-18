@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Arrow from '../components/svg/Arrow.vue'
 import Card from '@/components/Card.vue';
-import Shark from '@/components/Shark.vue'
+import Fishes from '@/components/Fishes.vue'
 </script>
 
 <template>
@@ -19,15 +19,16 @@ import Shark from '@/components/Shark.vue'
       </div>
       <div
         class="text text-2xl mb-[10%] animate-fade-up animate-duration-[1500ms] animate-delay-500 animate-ease-in-out">
-        <button
-          class="bg-dblue px-4 py-2 rounded-3xl m-4 hover:bg-black hover:text-dblue hover:scale-105 duration-300">Мои
-          работы</button>
+        <a href="#stack"><button
+          class="bg-dblue px-4 py-2 rounded-3xl m-4 hover:bg-black hover:text-dblue hover:scale-105 duration-300">Мой
+          стек</button></a>
         <button
           class="bg-black px-4 py-2 rounded-3xl m-4 text-white hover:text-dblue hover:scale-105 duration-300">Контакты</button>
       </div>
+      
       <div
-        class="flex flex-col items-center hover:scale-110  duration-300 cursor-pointer animate-fade-up animate-duration-[1500ms] animate-delay-700 animate-ease-in-out">
-        <div class="text text-3xl relative  cursor-pointer mb-6">
+        class="flex flex-col items-center  cursor-pointer animate-fade-up animate-duration-[1500ms] animate-delay-700 animate-ease-in-out">
+        <div class="text text-3xl relative  cursor-pointer mb-6 hover:scale-110  duration-300">
           Мой стек
         </div>
         <div>
@@ -36,11 +37,11 @@ import Shark from '@/components/Shark.vue'
       </div>
     </div>
   </div>
-  <div class="h-[100dvh] bg-dblue flex justify-between">
+  <div class="h-[100dvh] bg-dblue flex justify-between" id="stack">
     <div class="h-[100%] w-[40%]">
       <div class=" h-[90%] ">
         <Suspense>
-          <Shark />
+          <Fishes />
         </Suspense>
       </div>
       <div class="heading ml-[20%] text-3xl">
@@ -51,30 +52,24 @@ import Shark from '@/components/Shark.vue'
       <div class="heading text-4xl mb-[25%]">
         Стек технологий
       </div>
-      <div class="bg-notblack w-[140%] rounded-3xl h-[20%] text-white mb-[15%]  hover:shadow-2xl duration-200">
+      <div class="bg-notblack w-[100%] rounded-3xl pb-2 text-white mb-[15%]  hover:shadow-2xl duration-200">
         <div class="text-2xl px-5 py-2 heading">Основное</div>
         <div class="text-xl px-8 text">
           <ul>
-            <li>JavaScript, TypeScript, HTML, CSS</li>
-            <li>Vue</li>
+            <li class="py-1">JavaScript, опыт с TypeScript, NodeJs, HTML, CSS</li>
+            <li class="py-1">Vue3, Nuxt3, React</li>
+            <li class="py-1">ElysiaJs</li>
           </ul>
         </div>
       </div>
-      <div class="bg-notblack w-[140%] rounded-3xl h-[20%] text-white mb-[15%] hover:shadow-2xl duration-200">
-        <div class="text-2xl px-5 py-2 heading">Основное</div>
+      <div class="bg-notblack w-[100%] rounded-3xl pb-2 text-white mb-[15%] hover:shadow-2xl duration-200">
+        <div class="text-2xl px-5 py-2 heading">Прочее</div>
         <div class="text-xl px-8 text">
           <ul>
-            <li>JavaScript, TypeScript, HTML, CSS</li>
-            <li>Vue</li>
-          </ul>
-        </div>
-      </div>
-      <div class="bg-notblack w-[140%] rounded-3xl h-[20%] text-white mb-[15%] hover:shadow-2xl duration-200">
-        <div class="text-2xl px-5 py-2 heading">Основное</div>
-        <div class="text-xl px-8 text">
-          <ul>
-            <li>JavaScript, TypeScript, HTML, CSS</li>
-            <li>Vue</li>
+            <li class="py-1">Tailwind CSS, REST API</li>
+            <li class="py-1">Git, Docker</li>
+            <li class="py-1">Vite, опыт с Webpack</li>
+            <li class="py-1">Базовые знания Python и SQL</li>
           </ul>
         </div>
       </div>

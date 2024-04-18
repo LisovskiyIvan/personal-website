@@ -7,6 +7,9 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style>
+* {
+  scroll-behavior: smooth;
+}
 .text {
   font-family: "Golos Text", sans-serif;
   font-optical-sizing: auto;
