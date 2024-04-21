@@ -8,7 +8,7 @@ const cat = shallowRef()
 const { onLoop } = useRenderLoop()
 onLoop(({ delta, elapsed }) => {
     if (cat.value) {
-        cat.value.rotation.z = 3.3 + (elapsed * 1.3) / 5;
+        cat.value.rotation.z = 3.3 + (elapsed * 1.3) / 3;
     }
 })
 

@@ -17,8 +17,8 @@ onLoop(({ delta, elapsed }) => {
         fish.value.scale.y = 0.1
         fish.value.rotation.z =  Math.sin(elapsed * 1.3) / 5;
         fish.value.rotation.y = 0.3 + Math.sin(elapsed * 1.5) / 5;
-        fish.value.position.y = -2 + Math.sin(elapsed * 2) / 5
-        fish.value.position.x = Math.sin(elapsed * 1.3) / 5
+        fish.value.position.y = -1 + Math.sin(elapsed * 2) / 5
+        fish.value.position.x = -4 + Math.sin(elapsed * 1.3) / 5
         currentAction.value.play()
         
     }
