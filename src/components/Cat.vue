@@ -8,20 +8,21 @@ const cat = shallowRef()
 const { onLoop } = useRenderLoop()
 onLoop(({ delta, elapsed }) => {
     if (cat.value) {
-        cat.value.rotation.z = 3.3 + (elapsed * 1.3) / 3;
+        cat.value.position.y = Math.sin(elapsed * 1.5) / 5;
+        cat.value.position.z = -1.5 + Math.sin(elapsed * 1.5) / 5;
     }
 })
 
-const { scene, nodes, animations } = await useGLTF('/models/cat/scene.gltf', { draco: true })
+const { scene, nodes, animations } = await useGLTF('/models/cats/scene.gltf', { draco: true })
 const { actions } = useAnimations(animations, scene)
 
-const currentAction = ref(actions.Animation)
+const currentAction = ref(actions['Take 001'])
 currentAction.value.play()
 
 </script>
 
 <template>
         <Suspense>
-            <primitive ref="cat" :scale="2" :object="nodes.root" :position="[0, 0, 0]" :rotation="[0.1, -3.15, 3.25]" />
+            <primitive ref="cat" :scale="1" :object="nodes.RootNode" :position="[0, 0, 0]" :rotation="[4.9, 0, 0]" />
         </Suspense>
 </template>
