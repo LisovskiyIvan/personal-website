@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ["./src/**/*.{html,js,vue}"],
   theme: {
@@ -13,6 +14,20 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          clamp(value) {
+            const sizes = theme('fontSize');
+            const split = value
+              .split('-')
+              .map(v => sizes[v] ? sizes[v]['0'] : v);
+            return {
+              fontSize: `clamp(${split[0]}, ${split[1]}, ${split[2]})`,
+            }
+          }
+        });
+    })
   ],
 }

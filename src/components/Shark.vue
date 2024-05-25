@@ -1,10 +1,21 @@
 <script async setup lang="ts">
 import { useRenderLoop } from '@tresjs/core'
-import { shallowRef } from 'vue';
+import { ref, shallowRef, watchEffect } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
+
+let offset = ref(0)
+watchEffect(() => {
+    const { width } = useWindowSize()
+    if (width.value < 650) offset.value = 0
+    else offset.value = width.value/300 - 0.5
+})
 
 const shark = shallowRef()
 
 import { useGLTF } from '@tresjs/cientos'
+
+
 
 const { scene, nodes, animations, materials } = await useGLTF('/models/shark/scene.gltf', { draco: true })
 const { onLoop } = useRenderLoop()
@@ -15,6 +26,7 @@ onLoop(({ delta, elapsed }) => {
         // shark.value.scale.y = 10
         shark.value.rotation.z = -10.2 + Math.sin(elapsed * 1.3) / 3;
         shark.value.position.y = 0.8 + Math.sin(elapsed * 1)
+        
     }
 })
 
@@ -24,7 +36,7 @@ onLoop(({ delta, elapsed }) => {
     <!-- <TresCanvas clear-color='#0FA3B1'> -->
         <!-- <TresPerspectiveCamera :look-at="[0, 0, 0]" :position="[0, 2, 10]" /> -->
         <Suspense>
-            <primitive ref="shark" :object="nodes.root" :position="[-7, 0, -1]" :rotation="[-1.8, 0, 5]" />
+            <primitive ref="shark" :object="nodes.root" :position="[-offset, 0, -1]" :rotation="[-1.8, 0, 5]" />
         </Suspense>
         <!-- <TresMesh receive-shadow :rotate-x="- Math.PI/2">
       <TresPlaneGeometry :args="[10, 10]" />

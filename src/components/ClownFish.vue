@@ -1,13 +1,21 @@
 <script async setup lang="ts">
 import { useRenderLoop } from '@tresjs/core'
-import { ref, shallowRef } from 'vue';
+import { ref, shallowRef, watchEffect } from 'vue';
 import { useGLTF, useAnimations } from '@tresjs/cientos'
+import { useWindowSize } from '@vueuse/core'
 
 const fish = shallowRef()
 
+let offset = ref(0)
+watchEffect(() => {
+    const { width } = useWindowSize()
+    if (width.value < 650) offset.value = 0
+    else offset.value = width.value/500
+})
+
+
 const { scene, nodes, animations, materials } = await useGLTF('/models/clownfish/scene.gltf', { draco: true })
 const { actions } = useAnimations(animations, scene)
-
 const currentAction = ref(actions.swim)
 const { onLoop } = useRenderLoop()
 onLoop(({ delta, elapsed }) => {
@@ -18,7 +26,7 @@ onLoop(({ delta, elapsed }) => {
         fish.value.rotation.z =  Math.sin(elapsed * 1.3) / 5;
         fish.value.rotation.y = 0.3 + Math.sin(elapsed * 1.5) / 5;
         fish.value.position.y = -1 + Math.sin(elapsed * 2) / 5
-        fish.value.position.x = -4 + Math.sin(elapsed * 1.3) / 5
+        fish.value.position.x = - offset.value + Math.sin(elapsed * 1.3) / 5
         currentAction.value.play()
         
     }

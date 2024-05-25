@@ -8,9 +8,9 @@ import { OrbitControls } from '@tresjs/cientos'
 <template>
   <div class=" h-[100vh]">
     <div class="absolute z-40 flex justify-between w-[100%] h-[100dvh]">
-      <div class="ml-[2%] pt-[10%]">
+      <div class="ml-[3%] pt-[10%]">
 
-        <div class="text-5xl ">世上无难事，只怕有心人</div>
+        <div class=" clamp-[2xl-3dvw-5xl] ">世上无难事，只怕有心人</div>
       </div>
       <div>
         <div class="hover:scale-110 cursor-pointer duration-300 relative top-[93%]">
@@ -18,14 +18,14 @@ import { OrbitControls } from '@tresjs/cientos'
             Обратно</RouterLink>
         </div>
       </div>
-      <div class="mr-[2%] pt-[10%]">
-        <div class="text-5xl ">Hesitation means defeat</div>
+      <div class="mr-[3%] pt-[10%]">
+        <div class="clamp-[2xl-3dvw-5xl] ">Hesitation means defeat</div>
       </div>
 
 
     </div>
     <TresCanvas clear-color='#0FA3B1'>
-      <TresPerspectiveCamera :look-at="[0, 0, 0]" :position="[0, 13, 0]" />
+      <TresPerspectiveCamera :look-at="[0, 0, 0]" :position="[0, 25, 0]" />
       <OrbitControls />
       <Suspense>
         <Cat />

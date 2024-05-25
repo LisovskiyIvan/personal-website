@@ -2,6 +2,7 @@
 import ClownFish from '@/components/ClownFish.vue'
 import Shark from '@/components/Shark.vue'
 
+
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import Shark from '@/components/Shark.vue'
     <Suspense>
         <Shark />
     </Suspense>
+   
     <Suspense>
         <ClownFish />
     </Suspense>
