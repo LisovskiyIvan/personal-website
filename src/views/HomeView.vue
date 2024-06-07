@@ -80,7 +80,11 @@ const slideUpSmall = {
   }
 }
 
+const skills = {
+  primary: ["JavaScript, TypeScript, HTML, CSS", "Основной Vue, могу React, пробовал Nuxt", "Elysia, Express, Postgres", "Prisma, пробовал TypeORM"],
+  secondary: ["REST API, Tailwind CSS", "Git, Docker", "Vite, Bun", "По нужде linux, nginx"]
 
+}
 
 </script>
 
@@ -95,7 +99,7 @@ const slideUpSmall = {
       </div>
       <div v-motion :initial="slideDown.initial" :visible="slideDown.visible"
         class="heading clamp-[34px-5dvw-6xl] text-center mb-[20%] sm:mb-[15%] lg:mb-[6%] 2xl:mb-[6%]">
-        Привет! Меня зовут Иван и я junior frontend разработчик
+        Привет! Меня зовут Иван и я junior web разработчик
       </div>
       <div v-motion :initial="slideUpBig.initial" :visible="slideUpBig.visible"
         class="text flex text-2xl flex-col sm:flex-row mb-[20%] sm:mb-[15%] lg:mb-[6%] 2xl:mb-[6%] ">
@@ -129,10 +133,10 @@ const slideUpSmall = {
           v-motion :initial="slideLeft.initial" :visibleOnce="slideLeft.visible">
           <div class="text-2xl px-5 py-2 heading">Основное</div>
           <div class="text-xl px-8 text">
-            <ul>
-              <li class="py-1">JavaScript, опыт с TypeScript, NodeJs, HTML, CSS</li>
-              <li class="py-1">Vue3, Nuxt3, React</li>
-              <li class="py-1">ElysiaJs(backend), SQLite</li>
+            <ul v-for="item in skills.primary">
+
+              <li class="py-1">{{ item }}</li>
+
             </ul>
           </div>
         </div>
@@ -141,13 +145,10 @@ const slideUpSmall = {
           v-motion :initial="slideLeft.initial" :visibleOnce="slideLeft.visible">
           <div class="text-2xl px-5 py-2 heading">Прочее</div>
           <div class="text-xl px-8 text">
-            <ul>
-              <li class="py-1">Tailwind CSS, REST API</li>
-              <li class="py-1">Git, Docker</li>
-              <li class="py-1">Vite, опыт с Webpack</li>
-              <li class="py-1">Базовые знания Python и SQL</li>
-              <li class="py-1">Bun и небольшой опыт пользования линуксом (ubuntu wsl)</li>
-              <li class="py-1">Конфигурирование nginx</li>
+            <ul v-for="item in skills.secondary">
+
+              <li class="py-1">{{ item }}</li>
+
             </ul>
           </div>
         </div>
@@ -158,14 +159,19 @@ const slideUpSmall = {
       <Fishes />
     </Suspense>
   </div>
-  <div class="h-[200dvh] bg-dblue" id="stackMobile" v-if="isMobile">
-    <div class="h-[50%] ">
-      <div class="heading ml-[20%] z-40 text-2xl absolute bottom-[-87%]">В вебе как рыба в воде</div>
+  <div class="h-[100dvh] bg-dblue" id="stackMobile" v-if="isMobile">
+    <div class="h-[100%]">
+
+      <div class="heading mt-[10%] px-[5%] z-40 text-2xl absolute">В вебе как рыба в воде</div>
+      <div class="absolute h-[100%] z-40 w-[100%]"></div>
       <Suspense>
         <Fishes />
       </Suspense>
     </div>
-    <div class="min-h-[50%] bg-black">
+    
+
+  </div>
+  <div class="min-h-[100dvh] bg-black">
       <div class=" flex flex-col items-center ">
         <div class="heading text-orange clamp-[24px-5dvw-4xl] my-[10%] z-40 ">
           Стек технологий
@@ -174,31 +180,26 @@ const slideUpSmall = {
           :visibleOnce="slideLeft.visible">
           <div class="text-2xl px-5 py-2 heading">Основное</div>
           <div class="text-xl px-8 text">
-            <ul>
-              <li class="py-1">JavaScript, опыт с TypeScript, NodeJs, HTML, CSS</li>
-              <li class="py-1">Vue3, Nuxt3, React</li>
-              <li class="py-1">ElysiaJs(backend), SQLite</li>
+            <ul v-for="item in skills.primary">
+
+              <li class="py-1">{{ item }}</li>
+
             </ul>
           </div>
         </div>
-        <div class="bg-dblue w-[70%] rounded-3xl pb-2 text-black " v-motion :initial="slideRight.initial"
+        <div class="bg-dblue w-[70%] rounded-3xl pb-2 text-black mb-[30px]" v-motion :initial="slideRight.initial"
           :visibleOnce="slideRight.visible">
           <div class="text-2xl px-5 py-2 heading">Прочее</div>
           <div class="text-xl px-8 text">
-            <ul>
-              <li class="py-1">Tailwind CSS, REST API</li>
-              <li class="py-1">Git, Docker</li>
-              <li class="py-1">Vite, опыт с Webpack</li>
-              <li class="py-1">Базовые знания Python и SQL</li>
-              <li class="py-1">Bun и небольшой опыт пользования линуксом (ubuntu wsl)</li>
-              <li class="py-1">Конфигурирование nginx</li>
+            <ul v-for="item in skills.secondary">
+
+              <li class="py-1">{{ item }}</li>
+
             </ul>
           </div>
         </div>
       </div>
     </div>
-
-  </div>
   <div class=" h-[100dvh] ">
     <div class="h-[25%] bg-blue flex items-center">
       <div class="ml-[5%] text-5xl heading">
@@ -207,7 +208,7 @@ const slideUpSmall = {
     </div>
     <div class="flex flex-col min-h-[75%] bg-dblue items-center justify-center py-[5%]">
       <div
-        class="w-[95%] 2xl:w-[60%] min-h-[300px] bg-notblack rounded-3xl  flex flex-col items-center justify-center p-[3%] text text-white text-xl"
+        class="w-[95%] 2xl:w-[60%] min-h-[300px] bg-notblack rounded-3xl  flex flex-col items-center justify-center p-[7%]  text text-white text-xl"
         v-motion :initial="slideDown.initial" :visible="slideDown.visible">
         <div class="text text-white text-xl">
           Меня зовут Иван, мне 21 год и я начинающий веб разработчик. Имею больше скилов во frontend, но так же

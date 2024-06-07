@@ -6,11 +6,21 @@ import { useWindowSize } from '@vueuse/core'
 
 const fish = shallowRef()
 
-let offset = ref(0)
+const offsetPositionX = ref(0)
+const offsetPositionY = ref(0)
+const offsetRotationY = ref(0)
 watchEffect(() => {
     const { width } = useWindowSize()
-    if (width.value < 650) offset.value = 0
-    else offset.value = width.value/500
+    if (width.value < 650) {
+        offsetPositionX.value = 0
+        offsetPositionY.value = -2.3
+        offsetRotationY.value = 0.3
+    }
+    else {
+        offsetPositionX.value = width.value/500 - width.value/1700
+        offsetPositionY.value = -1
+        offsetRotationY.value = 0.6
+    }
 })
 
 
@@ -24,9 +34,9 @@ onLoop(({ delta, elapsed }) => {
         fish.value.scale.z = 0.1
         fish.value.scale.y = 0.1
         fish.value.rotation.z =  Math.sin(elapsed * 1.3) / 5;
-        fish.value.rotation.y = 0.3 + Math.sin(elapsed * 1.5) / 5;
-        fish.value.position.y = -1 + Math.sin(elapsed * 2) / 5
-        fish.value.position.x = - offset.value + Math.sin(elapsed * 1.3) / 5
+        fish.value.rotation.y = offsetRotationY.value + Math.sin(elapsed * 1.5) / 5;
+        fish.value.position.y =  offsetPositionY.value + Math.sin(elapsed * 2) / 5
+        fish.value.position.x = - offsetPositionX.value + Math.sin(elapsed * 1.3) / 5
         currentAction.value.play()
         
     }
