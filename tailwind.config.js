@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animated'),
+    require('daisyui'),
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {

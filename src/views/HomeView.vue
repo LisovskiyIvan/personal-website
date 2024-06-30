@@ -2,6 +2,7 @@
 import Fishes from "@/components/Fishes.vue";
 import { useWindowSize } from "@vueuse/core";
 import { ref, watchEffect } from "vue";
+import Timeline from "@/components/Timeline.vue";
 
 const { width } = useWindowSize();
 
@@ -112,7 +113,7 @@ const skills = {
 
 <template>
   <div
-    class="bg-blue h-auto min-h-[100vh] sm:h-[100dvh] w-[100%] flex justify-center"
+    class="bg-blue h-auto min-h-[100vh] sm:h-[100dvh] w-[100%] flex justify-center text-black"
   >
     <div class="w-[80%] flex flex-col items-center mt-[8%]">
       <div
@@ -172,7 +173,7 @@ const skills = {
       </RouterLink>
     </div>
   </div>
-  <div class="min-h-[100dvh] bg-dblue" id="stack" v-if="!isMobile">
+  <div class="min-h-[100dvh] bg-dblue text-black" id="stack" v-if="!isMobile">
     <div class="absolute z-40 w-[100%] h-[100%] flex justify-between">
       <div
         class="heading sm:ml-[3%] lg:ml-[5%] 2xl:ml-[10%] text-3xl top-[85%] relative text-center"
@@ -218,7 +219,7 @@ const skills = {
       <Fishes />
     </Suspense>
   </div>
-  <div class="h-[100dvh] bg-dblue" id="stackMobile" v-if="isMobile">
+  <div class="h-[100dvh] bg-dblue text-black" id="stackMobile" v-if="isMobile">
     <div class="h-[100%]">
       <div class="heading mt-[10%] px-[5%] z-40 text-2xl absolute">
         В вебе как рыба в воде
@@ -229,7 +230,7 @@ const skills = {
       </Suspense>
     </div>
   </div>
-  <div class="min-h-[100dvh] bg-black" v-if="isMobile">
+  <div class="min-h-[100dvh] bg-black text-black" v-if="isMobile">
     <div class="flex flex-col items-center">
       <div class="heading text-orange clamp-[24px-5dvw-4xl] my-[10%] z-40">
         Стек технологий
@@ -262,7 +263,7 @@ const skills = {
       </div>
     </div>
   </div>
-  <div class="h-[100dvh]">
+  <div class="h-[100dvh] text-black">
     <div class="h-[25%] bg-blue flex items-center">
       <div class="ml-[5%] text-5xl heading">Кто я</div>
     </div>
@@ -288,7 +289,7 @@ const skills = {
           v-motion
           :initial="slideRight.initial"
           :visible="slideRight.visible"
-          class="text-2xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow "
+          class="text-2xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow"
         >
           <a href="https://github.com/LisovskiyIvan" target="_blank">github</a>
         </div>
@@ -296,13 +297,14 @@ const skills = {
           v-motion
           :initial="slideLeft.initial"
           :visible="slideLeft.visible"
-          class="text-xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow "
+          class="text-xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow"
         >
           <RouterLink to="/contact"> Контакты</RouterLink>
         </div>
       </div>
     </div>
   </div>
+  <Timeline />
   <div
     class="fixed bottom-[5%] right-[2%] z-100 w-12 sm:w-16 hover:scale-110 duration-300 z-50"
   >
