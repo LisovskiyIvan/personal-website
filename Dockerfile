@@ -1,12 +1,13 @@
-FROM oven/bun as build
+FROM node:22 as build
 
 WORKDIR /app
 
 COPY package*.json ./
 COPY .nginx/ ./
-RUN bun install
 COPY . .
-RUN bun build-only
+RUN npm install
+
+RUN npm run build
 
 FROM nginx
 

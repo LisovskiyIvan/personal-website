@@ -3,6 +3,7 @@ import Fishes from "@/components/Fishes.vue";
 import { useWindowSize } from "@vueuse/core";
 import { ref, watchEffect } from "vue";
 import Timeline from "@/components/Timeline.vue";
+import fish from "@/assets/fish.json";
 
 const { width } = useWindowSize();
 
@@ -97,16 +98,16 @@ const slideUpSmall = {
 
 const skills = {
   primary: [
-    "JavaScript, TypeScript, HTML, CSS",
-    "Основной Vue, могу React, пробовал Nuxt",
-    "Elysia, Express, Postgres",
-    "Prisma, пробовал TypeORM",
+    "JavaScript, TypeScript",
+    "Vue, React",
+    "Elysia, Express, Nest",
+    "Postgresql, Prisma",
   ],
   secondary: [
     "REST API, Tailwind CSS",
     "Git, Docker",
     "Vite, Bun",
-    "По нужде linux, nginx",
+    "linux, nginx",
   ],
 };
 </script>
@@ -115,18 +116,14 @@ const skills = {
   <div
     class="bg-blue h-auto min-h-[100vh] sm:h-[100dvh] w-[100%] flex justify-center text-black"
   >
-    <div class="w-[80%] flex flex-col items-center mt-[8%]">
+    <div class="w-[80%] flex flex-col items-center mt-[3%]">
       <div
-        class="mb-[5%]"
+        class="mb-[3%]"
         v-motion
         :initial="slideLeft.initial"
         :visible="slideLeft.visible"
       >
-        <div
-          class="emoji clamp-[6xl-5dvw-7xl] animate-wiggle-more animate-infinite animate-duration-[7000ms] animate-delay-300 animate-ease-in-out"
-        >
-          🚀
-        </div>
+        <Vue3Lottie :animationData="fish" :height="200" :width="200" />
       </div>
       <div
         v-motion
@@ -276,10 +273,10 @@ const skills = {
         :initial="slideDown.initial"
         :visible="slideDown.visible"
       >
-        <div class="text text-white text-xl">
+        <div class="text text-white text-xl text-center">
           Меня зовут Иван, мне 21 год и я начинающий веб разработчик. Имею
           больше скилов во frontend, но так же заинтересован в backend. Учусь на
-          последнем курсе Лесотехнического университета. Больше года
+          первом курсе магистратуры Лесотехнического университета. Больше года
           самостоятельно изучаю сферу и надеюсь реализовать себя в ней. В
           основном занимаюсь самообразованием, проходил несколько курсов от
           Hexlet. Имею английский уровня b2 и китайский hsk3. Другие мои пет
@@ -289,7 +286,7 @@ const skills = {
           v-motion
           :initial="slideRight.initial"
           :visible="slideRight.visible"
-          class="text-2xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow"
+          class="text-2xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow hover:scale-110 transition-all duration-300"
         >
           <a href="https://github.com/LisovskiyIvan" target="_blank">github</a>
         </div>
@@ -297,7 +294,7 @@ const skills = {
           v-motion
           :initial="slideLeft.initial"
           :visible="slideLeft.visible"
-          class="text-xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow"
+          class="text-xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow hover:scale-110"
         >
           <RouterLink to="/contact"> Контакты</RouterLink>
         </div>

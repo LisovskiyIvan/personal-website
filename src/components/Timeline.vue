@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import task from '@/assets/task.json'
+import resume from '@/assets/resume.json'
 const skills = {
-  start: ["HTML", "CSS", "JS", "docker", "nodejs"],
-  first: ["Vue", "Nuxt", "Tailwind CSS", "REST API"],
+  start: ["Vue3", "TresJs", "TypeScript", "docker"],
+  first: ["React", "Nestjs", "Postgresql", "Prisma", "docker"],
 };
 </script>
 
 <template>
-  <div class="min-h-[100dvh] flex justify-center bg-blue text-black text">
+  <div class=" flex justify-center bg-blue text-black text">
     <ul
       className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical w-[70%] py-[5%]"
     >
@@ -14,12 +16,8 @@ const skills = {
         <div
           className="timeline-start md:text-end mb-10 mt-5 text-white bg-black rounded-xl p-3 mr-5"
         >
-          <div className="text-lg heading font-black">Начало</div>
-          Больше года назад начал заинтересовался веб девом, html css js как
-          стандарт новичка. Написал свой первый докер файл до того, как узнал
-          что такое nodejs и package.json(конечно оно не сработало и пришлось
-          узнать). Сделали с другом конвертер валют(я только фронтенд), ничего
-          интересного.
+          <div className="text-lg heading font-black">Сайт резюме<span><Vue3Lottie :animationData="resume"  :height="100" :width="100" /></span></div>
+          Больше года назад начал заинтересовался веб девом. Сделал этот сайт как портфолио
           <div className="text-lg heading font-black my-1">
             Использованные технологии
           </div>
@@ -36,13 +34,10 @@ const skills = {
       <li>
         <hr />
         <div
-          className="timeline-end mb-10 text-white bg-black rounded-xl p-3 ml-5 "
+          className="timeline-end mb-10 text-white bg-black rounded-xl p-3 lg:ml-5 "
         >
-          <div className="text-lg heading font-black ">Первый фреймворк</div>
-          Посмотрев на react и vue, мне больше понравился vue. Посмотрел доки,
-          посмотрел nuxt - решил писать на nuxt (ошибка). Идея сайта для
-          просмотра аниме - в итоге ничего особого не вышло, дальше верстки дело
-          не зашло (оно и не удивительно, слишком мало знаний).
+          <div className="text-lg heading font-black ">Planetify <span><Vue3Lottie :animationData="task"  :height="100" :width="100" /></span></div>
+          Недавно я понял, что мне необходим таск трекер для жизни. Поэтому я решил написать свой. Попробовать можно <a href="https://planetify.space/" target="_blank" class="text-xl transition-all relative hover:scale-110 duration-300 after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">здесь</a>
           <div className="text-lg heading font-black my-1">
             Использованные технологии
           </div>
@@ -56,47 +51,7 @@ const skills = {
         </div>
         <hr />
       </li>
-      <li>
-        <hr />
-        <div
-          className="timeline-start md:text-end mb-10 text-white bg-black rounded-xl p-3 mr-5"
-        >
-          <div className="text-lg heading font-black">Больше фреймворков</div>
-          Рынок труда заставил начать пользоваться react. К этому моменту я уже
-          дошел до использованния TypeScript. Первый опыт использованния react
-          после vue был довольно странным, много вопросов и еще меньше ответов. Первый пет проект, который не так уж и плох это <span>Dictionarwhy</span>. П
-        </div>
-        <hr />
-      </li>
-      <li>
-        <hr />
-        <div
-          className="timeline-end mb-10 text-white bg-black rounded-xl p-3 ml-5"
-        >
-          <div className="text-lg heading font-black">Не только фронтенд</div>
-          iPhone is a line of smartphones produced by Apple Inc. that use
-          Apple's own iOS mobile operating system. The first-generation iPhone
-          was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since
-          then, Apple has annually released new iPhone models and iOS updates.
-          As of November 1, 2018, more than 2.2 billion iPhones had been sold.
-          As of 2022, the iPhone accounts for 15.6% of global smartphone market
-          share
-        </div>
-        <hr />
-      </li>
-      <li>
-        <hr />
-        <div
-          className="timeline-start md:text-end mb-10 text-white bg-black rounded-xl p-3 mr-5"
-        >
-          <div className="text-lg heading font-black">И вот я тут</div>
-          The Apple Watch is a line of smartwatches produced by Apple Inc. It
-          incorporates fitness tracking, health-oriented capabilities, and
-          wireless telecommunication, and integrates with iOS and other Apple
-          products and services
-        </div>
-      </li>
-      <hr />
+      
     </ul>
   </div>
 </template>

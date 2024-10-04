@@ -7,7 +7,7 @@ import { OrbitControls } from '@tresjs/cientos'
 
 <template>
   <div class=" h-[100vh]">
-    <div class="absolute z-40 flex justify-between w-[100%] h-[100dvh]">
+    <div class="absolute z-40 flex justify-between w-[100%] h-[100dvh] text-black">
       <div class="ml-[3%] pt-[10%]">
 
         <div class=" clamp-[2xl-3dvw-5xl] ">世上无难事，只怕有心人</div>
