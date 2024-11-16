@@ -34,9 +34,11 @@ onLoop(({ delta, elapsed }) => {
         // shark.value.scale.x = 10
         // shark.value.scale.z = 10
         // shark.value.scale.y = 10
+
+        shark.value.position.x = offsetPositionX.value + Math.sin(elapsed * 0.5) * 0.5 - 10.6;
+        shark.value.position.y = offsetPositionY.value + Math.sin(elapsed * 1) * 0.2;
+        shark.value.position.z = -1 + Math.sin(elapsed * 0.7) * 0.3;
         shark.value.rotation.z = offsetRotationZ.value + Math.sin(elapsed * 1.3) / 3;
-        shark.value.position.y = offsetPositionY.value + Math.sin(elapsed * 1)
-        
     }
 })
 
