@@ -4,7 +4,7 @@ import { useWindowSize } from "@vueuse/core";
 import { ref, watchEffect } from "vue";
 import Timeline from "@/components/Timeline.vue";
 import fish from "@/assets/fish.json";
-
+import Header from "@/components/Header.vue";
 const { width } = useWindowSize();
 
 const isMobile = ref(false);
@@ -125,7 +125,7 @@ const skills = {
       >
         <Vue3Lottie :animationData="fish" :height="200" :width="200" />
       </div>
-      <div
+      <!-- <div
         v-motion
         :initial="slideDown.initial"
         :visible="slideDown.visible"
@@ -153,8 +153,8 @@ const skills = {
             Контакты
           </button>
         </RouterLink>
-      </div>
-
+      </div> -->
+      <Header :slideDown="slideDown" :slideUpBig="slideUpBig" :isMobile="isMobile" />
       <RouterLink
         to="cat"
         v-motion
@@ -260,9 +260,9 @@ const skills = {
       </div>
     </div>
   </div>
-  <div class="h-[100dvh] text-black">
+  <div class="min-h-[100dvh] text-black bg-dblue">
     <div class="h-[25%] bg-blue flex items-center">
-      <div class="ml-[5%] text-5xl heading">Кто я</div>
+      <div class="ml-[5%] my-[5%] text-5xl heading">Кто я</div>
     </div>
     <div
       class="flex flex-col min-h-[75%] bg-dblue items-center justify-center py-[5%]"
@@ -274,7 +274,7 @@ const skills = {
         :visible="slideDown.visible"
       >
         <div class="text text-white text-xl text-center">
-          Меня зовут Иван, мне 21 год и я начинающий веб разработчик. Имею
+          Меня зовут Иван, мне 22 года и я начинающий веб разработчик. Имею
           больше скилов во frontend, но так же заинтересован в backend. Учусь на
           первом курсе магистратуры Лесотехнического университета. Больше года
           самостоятельно изучаю сферу и надеюсь реализовать себя в ней. В
