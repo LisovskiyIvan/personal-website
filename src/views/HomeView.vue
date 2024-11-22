@@ -125,36 +125,7 @@ const skills = {
       >
         <Vue3Lottie :animationData="fish" :height="200" :width="200" />
       </div>
-      <!-- <div
-        v-motion
-        :initial="slideDown.initial"
-        :visible="slideDown.visible"
-        class="heading clamp-[34px-5dvw-6xl] text-center mb-[20%] sm:mb-[15%] lg:mb-[6%] 2xl:mb-[6%]"
-      >
-        Привет! Меня зовут Иван и я junior web разработчик
-      </div>
-      <div
-        v-motion
-        :initial="slideUpBig.initial"
-        :visible="slideUpBig.visible"
-        class="text flex text-2xl flex-col sm:flex-row mb-[20%] sm:mb-[15%] lg:mb-[6%] 2xl:mb-[6%]"
-      >
-        <a :href="isMobile ? '#stackMobile' : '#stack'"
-          ><button
-            class="bg-dblue px-4 py-2 rounded-3xl my-8 2xl:my-4 mx-6 hover:bg-black hover:text-dblue hover:scale-105 duration-300"
-          >
-            Мой стек
-          </button></a
-        >
-        <RouterLink to="contact"
-          ><button
-            class="bg-black px-4 py-2 rounded-3xl my-8 2xl:my-4 mx-6 text-white hover:text-dblue hover:scale-105 duration-300"
-          >
-            Контакты
-          </button>
-        </RouterLink>
-      </div> -->
-      <Header :slideDown="slideDown" :slideUpBig="slideUpBig" :isMobile="isMobile" />
+      <Header :slideDown="slideDown" :slideUpBig="slideUpBig" :isMobile="isMobile" :slideRight="slideRight"/>
       <RouterLink
         to="cat"
         v-motion

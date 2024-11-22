@@ -33,6 +33,16 @@ type Props = {
         };
     };
 }
+    slideRight: {
+    initial: {
+        opacity: number;
+        x: number;
+    };
+    visible: {
+        opacity: number;
+        x: number;
+    };
+}
     isMobile: boolean
 }
 
@@ -73,6 +83,9 @@ defineProps<Props>()
       </div>
     </div>
 
-    <Vue3Lottie :animationData="me" :height="isMobile ? 300 : 400" :width="isMobile ? 300 : 400"  class=" sm:w-[50%]" />
+    <Vue3Lottie  v-motion
+    :initial="slideRight.initial"
+    :visible="slideRight.visible"
+    :animationData="me" :height="isMobile ? 300 : 400" :width="isMobile ? 300 : 400"  class=" sm:w-[50%]" />
     </div>
 </template>
