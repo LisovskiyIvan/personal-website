@@ -99,14 +99,14 @@ const slideUpSmall = {
 const skills = {
   primary: [
     "JavaScript, TypeScript",
-    "Vue, React",
-    "Elysia, Express, Nest",
+    "React, Mobx, Jotai, dnd-kit, Tailwind",
+    "Vue, Pinia, Tailwind",
+    "Nest, Elysia, Express",
     "Postgresql, Prisma",
   ],
   secondary: [
-    "REST API, Tailwind CSS",
     "Git, Docker",
-    "Vite, Bun",
+    "Vite, Webpack",
     "linux, nginx",
   ],
 };
@@ -227,47 +227,6 @@ const skills = {
           <ul v-for="item in skills.secondary">
             <li class="py-1">{{ item }}</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="min-h-[100dvh] text-black bg-dblue">
-    <div class="h-[25%] bg-blue flex items-center">
-      <div class="ml-[5%] my-[5%] text-5xl heading">Кто я</div>
-    </div>
-    <div
-      class="flex flex-col min-h-[75%] bg-dblue items-center justify-center py-[5%]"
-    >
-      <div
-        class="w-[95%] 2xl:w-[60%] min-h-[300px] bg-notblack rounded-3xl flex flex-col items-center justify-center p-[7%] sm:p-[3%] lg:p-[1%] text text-white text-xl"
-        v-motion
-        :initial="slideDown.initial"
-        :visible="slideDown.visible"
-      >
-        <div class="text text-white text-xl text-center">
-          Меня зовут Иван, мне 22 года и я начинающий веб разработчик. Имею
-          больше скилов во frontend, но так же заинтересован в backend. Учусь на
-          первом курсе магистратуры Лесотехнического университета. Больше года
-          самостоятельно изучаю сферу и надеюсь реализовать себя в ней. В
-          основном занимаюсь самообразованием, проходил несколько курсов от
-          Hexlet. Имею английский уровня b2 и китайский hsk3. Другие мои пет
-          проекты можно посмотреть на моем github
-        </div>
-        <div
-          v-motion
-          :initial="slideRight.initial"
-          :visible="slideRight.visible"
-          class="text-2xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow hover:scale-110 transition-all duration-300"
-        >
-          <a href="https://github.com/LisovskiyIvan" target="_blank">github</a>
-        </div>
-        <div
-          v-motion
-          :initial="slideLeft.initial"
-          :visible="slideLeft.visible"
-          class="text-xl text text-black bg-dblue px-4 py-1 rounded-3xl my-3 2xl:my-2 hover:bg-yellow hover:scale-110"
-        >
-          <RouterLink to="/contact"> Контакты</RouterLink>
         </div>
       </div>
     </div>

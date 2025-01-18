@@ -58,7 +58,7 @@ defineProps<Props>()
         :visible="slideDown.visible"
         class="heading clamp-[34px-4dvw-6xl] text-center mb-[20%] sm:mb-[15%] lg:mb-[6%] 2xl:mb-[6%]"
       >
-        Привет! Меня зовут Иван и я junior web разработчик
+        Привет! Меня зовут Иван и я fullstack веб разработчик
       </div>
       <div
         v-motion
