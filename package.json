@@ -17,6 +17,7 @@
     "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",
     "pinia": "^2.1.7",
+    "pixi.js": "^8.7.3",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "vue3-lottie": "^3.3.1"
