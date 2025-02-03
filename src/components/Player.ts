@@ -11,12 +11,12 @@ export class Player extends AnimatedSprite {
     private isMoving: boolean = false;
     private direction: 'left' | 'right' | 'up' | 'down' = 'left';
     private sprites: { [key: string]: AnimatedSprite } = {};
-    private currentSprite: AnimatedSprite | null = null;
+    private speed: number = 1;
 
     constructor(app: Application) {
-        super(playerInfo.idle.animations.playerIdle as unknown as AnimatedSpriteFrames);
+        super(playerInfo.idle.animations.idle as unknown as AnimatedSpriteFrames);
         this.app = app;
-        this.load(playerInfo.idle.meta.image).then((player) => {
+        this.loadInit(playerInfo.idle.meta.image).then((player) => {
             this.setupPlayer(player);
         })
         this.loadSprites();
@@ -24,25 +24,42 @@ export class Player extends AnimatedSprite {
         this.setupControls();
     }
 
-    async load(path: string) {
+    async loadInit(path: string) {
         await Assets.load(path);
         const spritesheet = new Spritesheet(
             Texture.from(path),
             playerInfo.idle
         );
         await spritesheet.parse();
-        const player = new AnimatedSprite(spritesheet.animations.playerIdle);
+        const player = new AnimatedSprite(spritesheet.animations.idle);
         return player;
     }
+
+    async load(path: string, data: any, name: string) {
+        await Assets.load(path);
+        const spritesheet = new Spritesheet(
+            Texture.from(path),
+            data
+        );
+        await spritesheet.parse();
+        const player = new AnimatedSprite(spritesheet.animations[name]);
+        return player;
+
+
+    }
+
+
 
     loadSprites() {
         for (const key in playerInfo) {
             if (Object.prototype.hasOwnProperty.call(playerInfo, key)) {
                 const info = playerInfo[key as keyof typeof playerInfo];
                 if (info && 'meta' in info && 'image' in info.meta) {
-                    this.load(info.meta.image).then((player) => {
+                    this.load(info.meta.image, info, key).then((player) => {
+
                         this.sprites[key] = player;
                     });
+
                 }
             }
         }
@@ -67,15 +84,24 @@ export class Player extends AnimatedSprite {
 
     updatePlayer() {
         if (!this.player) return;
+        this.checkIsMoving();
+
+        if (this.isMoving && this.player.textures !== this.sprites['run'].textures) {
+            this.run();
+        } else if (!this.isMoving && this.player.textures !== this.sprites['idle'].textures) {
+            this.idle();
+        }
+
         
-        if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['ц']) this.player.y -= 1;
-        if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['ы']) this.player.y += 1;
+        if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['ц']) this.player.y -= this.speed;
+        if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['ы']) this.player.y += this.speed;
+
         if (this.keys['ArrowLeft'] || this.keys['a'] || this.keys['ф']) {
-            this.player.x -= 1
+            this.player.x -= this.speed;
             this.direction = 'left';
         };
         if (this.keys['ArrowRight'] || this.keys['d'] || this.keys['в']) {
-            this.player.x += 1;
+            this.player.x += this.speed;
             this.direction = 'right';
         };
 
@@ -84,11 +110,41 @@ export class Player extends AnimatedSprite {
         } else if (this.direction === 'right') {
             this.player.scale.x = 2.5;
         }
+
+
+ 
       }
 
+    
+    private checkIsMoving() {
+        if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['ц'] || this.keys['ArrowDown'] || this.keys['s'] || this.keys['ы'] || this.keys['ArrowLeft'] || this.keys['a'] || this.keys['ф'] || this.keys['ArrowRight'] || this.keys['d'] || this.keys['в']) {
+            this.isMoving = true;
+        } else {
+            this.isMoving = false;
+        }
+    }
+
+    private run() {
+        if (this.player && this.sprites['run']) {
+            this.player.textures = this.sprites['run'].textures;
+            this.player.animationSpeed = 0.2;
+            this.player.play();
+        }
+    }
+
+    private idle() {
+        if (this.player && this.sprites['idle']) {
+            this.player.textures = this.sprites['idle'].textures;
+            this.player.animationSpeed = 0.2;
+            this.player.play();
+        }
+    }
+
       
+
   setupControls() {
     const handleKey = (e: KeyboardEvent, value: boolean) => {
+
       this.keys[e.key] = value;
     };
 
