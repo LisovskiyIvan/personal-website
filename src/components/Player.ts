@@ -12,6 +12,7 @@ export class Player extends AnimatedSprite {
     private readonly playerScale: number = 2.5;
     private readonly playerAnimationSpeed: number = 0.2;
     private isAttacking: boolean = false;
+    private isDead: boolean = false;
 
     constructor(app: Application) {
         super(playerInfo.idle.animations.idle as unknown as AnimatedSpriteFrames);
@@ -74,22 +75,27 @@ export class Player extends AnimatedSprite {
     }
 
     public updatePlayer(): void {
-        if (!this.player) return;
+        if (!this.player || this.isDead) return;
         
         this.checkIsMoving();
         this.checkIsAttacking();
         this.updateAnimation();
         this.updatePosition();
         this.updateDirection();
-
     }
 
     private updateAnimation(): void {
-        if (!this.player) return;
+        if (!this.player || this.isDead) return;
 
         const runSprite = this.sprites.get('run');
         const idleSprite = this.sprites.get('idle');
         const attackSprite = this.sprites.get('attack');
+        const deathSprite = this.sprites.get('death');
+
+        if (this.isDead && deathSprite && this.player.textures !== deathSprite.textures) {
+            this.die();
+            return;
+        }
 
         if (this.isMoving && runSprite && this.player.textures !== runSprite.textures && !this.isAttacking) {
             this.run();
@@ -98,14 +104,14 @@ export class Player extends AnimatedSprite {
         }
 
 
-        if (this.isAttacking && attackSprite && this.player.textures !== attackSprite.textures) {
+
+        if (this.isAttacking && attackSprite && this.player.textures !== attackSprite.textures && !this.isDead) {
             this.attack();
             this.player.onComplete = () => {
                 this.isAttacking = false;
                 this.idle();
             };
         }
-
     }
 
     private updatePosition(): void {
@@ -150,7 +156,6 @@ export class Player extends AnimatedSprite {
             this.player.animationSpeed = this.playerAnimationSpeed;
             this.player.loop = true;
             this.player.play();
-
         }
     }
 
@@ -168,16 +173,46 @@ export class Player extends AnimatedSprite {
         const attackSprite = this.sprites.get('attack');
         if (this.player && attackSprite) {
             this.player.textures = attackSprite.textures;
-            this.player.animationSpeed = this.playerAnimationSpeed * 2;
+            this.player.animationSpeed = this.playerAnimationSpeed * 1.5;
             this.player.loop = false;
             this.player.play();
+        }
+    }
+
+    private die(): void {
+        const deathSprite = this.sprites.get('death');
+        if (this.player && deathSprite) {
+            this.player.textures = deathSprite.textures;
+            this.player.animationSpeed = this.playerAnimationSpeed;
+            this.player.loop = false;
+            this.player.play();
+            this.player.onComplete = () => {
+                if (this.player) {
+                    this.player.stop();
+                }
+            };
+        }
+    }
+
+    public kill(): void {
+        this.isDead = true;
+        this.die();
+    }
+
+    public resetPlayer(): void {
+        if (this.player) {
+            this.isDead = false;
+            this.isAttacking = false;
+            this.isMoving = false;
+            this.direction = 'left';
+            this.player.position.set(this.app.screen.width / 2, this.app.screen.height / 2);
+            this.idle();
         }
     }
 
     private setupControls(): void {
         const handleKey = (e: KeyboardEvent, value: boolean) => {
             this.keys.set(e.key, value);
-
         };
 
         window.addEventListener('keydown', e => handleKey(e, true));

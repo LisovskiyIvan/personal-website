@@ -1,24 +1,50 @@
 <template>
   <div
-    class="flex justify-center items-center max-h-screen max-w-screen bg-gray-900"
+    class="flex justify-center items-center max-h-screen max-w-scree"
   >
     <canvas ref="gameCanvas"></canvas>
-    <div class="absolute top-4 left-4 text-white text-xl">
+    <div class="absolute top-4 left-4 text-white text-xl font-bold tracking-wide bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm shadow-lg">
       Счёт: {{ score }}
     </div>
+    <button 
+      class="absolute top-4 right-4 text-white text-xl font-semibold px-6 py-2 bg-red-500/80 hover:bg-red-600/80 rounded-lg transition-colors duration-200 backdrop-blur-sm shadow-lg w-32" 
+      @click="killPlayer"
+    >
+      Убить
+    </button>
+    <button 
+      class="absolute top-20 right-4 text-white text-xl font-semibold px-6 py-2 bg-emerald-500/80 hover:bg-emerald-600/80 rounded-lg transition-colors duration-200 backdrop-blur-sm shadow-lg w-32"
+      @click="app?.player?.resetPlayer"
+    >
+      Заново
+    </button>
   </div>
+
+
+
 </template>
+
+
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { Application, Assets, Spritesheet, Texture, AnimatedSprite } from "pixi.js";
+import { Application } from "pixi.js";
 import { Player } from "@/components/Player";
 
 const gameCanvas = ref(null);
 const score = ref(0);
-let app: Application | null = null;
+let app: Game | null = null;
+
+const killPlayer = () => {
+  if (app) {
+    app.player?.kill();
+  }
+}
+
+
 
 class Game {
+
 
   app: Application | null = null;
   canvas: HTMLCanvasElement;
@@ -32,23 +58,6 @@ class Game {
     this.keys = {};
   }
 
-
-  setupControls() {
-    const handleKey = (e: KeyboardEvent, value: boolean) => {
-      this.keys[e.key] = value;
-    };
-
-    window.addEventListener('keydown', e => handleKey(e, true));
-    window.addEventListener('keyup', e => handleKey(e, false));
-  }
-
-  updatePlayer() {
-    if (!this.player) return;
-    if (this.keys['ArrowUp'] || this.keys['w']) this.player.y -= 1;
-    if (this.keys['ArrowDown'] || this.keys['s']) this.player.y += 1;
-    if (this.keys['ArrowLeft'] || this.keys['a']) this.player.x -= 1;
-    if (this.keys['ArrowRight'] || this.keys['d']) this.player.x += 1;
-  }
 
   async setupPlayer() {
     if (!this.app) return;
@@ -65,7 +74,13 @@ class Game {
         canvas: this.canvas,
         resizeTo: window,
         backgroundColor: 0x1099bb,
+        backgroundAlpha: 1,
+        antialias: true,
+        premultipliedAlpha: false,
+        preserveDrawingBuffer: false,
+  
       });
+
 
       this.player = await this.setupPlayer() ?? null;
       if (!this.player) return;
@@ -74,17 +89,24 @@ class Game {
       console.error("Error initializing game:", error);
     }
   }
+
+
 }
 
+
+
 onMounted(async () => {
+
   const game = new Game(gameCanvas.value as unknown as HTMLCanvasElement);
-  app = game.app;
+  app = game;
   await game.init();
+
 });
+
 
 onUnmounted(() => {
   if (app) {
-    app.destroy();
+    app.app?.destroy();
   }
 });
 </script>
