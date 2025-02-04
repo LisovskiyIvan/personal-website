@@ -139,5 +139,129 @@
         "animations": {
             "run": ["playerRun_1","playerRun_8","playerRun_3","playerRun_7","playerRun_5","playerRun_6","playerRun_2","playerRun_4"]
         }
+    },
+    "attack": {
+        "frames": {
+            "playerAttack_1": {
+                "frame": { "x": 0, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_2": {
+                "frame": { "x": 144, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_3": { 
+                "frame": { "x": 288, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_4": {
+                "frame": { "x": 432, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_5": {
+                "frame": { "x": 576, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_6": {
+                "frame": { "x": 720, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_7": {
+                "frame": { "x": 864, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_8": {
+                "frame": { "x": 1008, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_9": {
+                "frame": { "x": 1152, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_10": {
+                "frame": { "x": 1296, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_11": {
+                "frame": { "x": 1440, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_12": {
+                "frame": { "x": 1584, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_13": {
+                "frame": { "x": 1728, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_14": {
+                "frame": { "x": 1872, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_15": {
+                "frame": { "x": 2016, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_16": {
+                "frame": { "x": 2160, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_17": {
+                "frame": { "x": 2304, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_18": {
+                "frame": { "x": 2448, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_19": {
+                "frame": { "x": 2592, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_20": {
+                "frame": { "x": 2736, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_21": {
+                "frame": { "x": 2880, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            },
+            "playerAttack_22": {
+                "frame": { "x": 3024, "y":0, "w":144, "h":64 },
+                "sourceSize": { "w": 144, "h": 64 },
+                "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 64 }
+            }
+
+        },
+        "meta": {
+            "image": "/img/playerAttack.png",
+            "format": "RGBA8888",
+            "size": { "w": 3168, "h": 64 },
+            "scale": 1
+        },
+        "animations": {
+            "attack": ["playerAttack_1","playerAttack_2","playerAttack_3","playerAttack_4","playerAttack_5","playerAttack_6","playerAttack_7","playerAttack_8","playerAttack_9","playerAttack_10","playerAttack_11","playerAttack_12","playerAttack_13","playerAttack_14","playerAttack_15","playerAttack_16","playerAttack_17","playerAttack_18","playerAttack_19","playerAttack_20","playerAttack_21","playerAttack_22"]
+        }
     }
 }

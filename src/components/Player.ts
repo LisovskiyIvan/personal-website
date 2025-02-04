@@ -11,6 +11,7 @@ export class Player extends AnimatedSprite {
     private readonly playerSpeed: number = 1;
     private readonly playerScale: number = 2.5;
     private readonly playerAnimationSpeed: number = 0.2;
+    private isAttacking: boolean = false;
 
     constructor(app: Application) {
         super(playerInfo.idle.animations.idle as unknown as AnimatedSpriteFrames);
@@ -76,9 +77,11 @@ export class Player extends AnimatedSprite {
         if (!this.player) return;
         
         this.checkIsMoving();
+        this.checkIsAttacking();
         this.updateAnimation();
         this.updatePosition();
         this.updateDirection();
+
     }
 
     private updateAnimation(): void {
@@ -86,12 +89,23 @@ export class Player extends AnimatedSprite {
 
         const runSprite = this.sprites.get('run');
         const idleSprite = this.sprites.get('idle');
+        const attackSprite = this.sprites.get('attack');
 
-        if (this.isMoving && runSprite && this.player.textures !== runSprite.textures) {
+        if (this.isMoving && runSprite && this.player.textures !== runSprite.textures && !this.isAttacking) {
             this.run();
-        } else if (!this.isMoving && idleSprite && this.player.textures !== idleSprite.textures) {
+        } else if (!this.isMoving && idleSprite && this.player.textures !== idleSprite.textures && !this.isAttacking) {
             this.idle();
         }
+
+
+        if (this.isAttacking && attackSprite && this.player.textures !== attackSprite.textures) {
+            this.attack();
+            this.player.onComplete = () => {
+                this.isAttacking = false;
+                this.idle();
+            };
+        }
+
     }
 
     private updatePosition(): void {
@@ -107,7 +121,7 @@ export class Player extends AnimatedSprite {
             this.player.x -= this.playerSpeed;
             this.direction = 'left';
         }
-        if (this.keys.get('playerSpeed') || this.keys.get('d') || this.keys.get('в')) {
+        if (this.keys.get('ArrowRight') || this.keys.get('d') || this.keys.get('в')) {
             this.player.x += this.playerSpeed;
             this.direction = 'right';
         }
@@ -116,6 +130,12 @@ export class Player extends AnimatedSprite {
     private updateDirection(): void {
         if (!this.player) return;
         this.player.scale.x = this.direction === 'left' ? -this.playerScale : this.playerScale;
+    }
+
+    private checkIsAttacking(): void {
+        if (this.keys.get(' ') && !this.isAttacking) {
+            this.isAttacking = true;
+        }
     }
 
     private checkIsMoving(): void {
@@ -128,7 +148,9 @@ export class Player extends AnimatedSprite {
         if (this.player && runSprite) {
             this.player.textures = runSprite.textures;
             this.player.animationSpeed = this.playerAnimationSpeed;
+            this.player.loop = true;
             this.player.play();
+
         }
     }
 
@@ -137,6 +159,17 @@ export class Player extends AnimatedSprite {
         if (this.player && idleSprite) {
             this.player.textures = idleSprite.textures;
             this.player.animationSpeed = this.playerAnimationSpeed;
+            this.player.loop = true;
+            this.player.play();
+        }
+    }
+
+    private attack(): void {
+        const attackSprite = this.sprites.get('attack');
+        if (this.player && attackSprite) {
+            this.player.textures = attackSprite.textures;
+            this.player.animationSpeed = this.playerAnimationSpeed * 2;
+            this.player.loop = false;
             this.player.play();
         }
     }
@@ -144,6 +177,7 @@ export class Player extends AnimatedSprite {
     private setupControls(): void {
         const handleKey = (e: KeyboardEvent, value: boolean) => {
             this.keys.set(e.key, value);
+
         };
 
         window.addEventListener('keydown', e => handleKey(e, true));
