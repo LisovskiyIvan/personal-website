@@ -1,58 +1,58 @@
 <script setup lang="ts">
-import me from '@/assets/me.json'
+import me from "@/assets/me.json";
 type Props = {
-    slideDown: {
+  slideDown: {
     initial: {
-        opacity: number;
-        y: number;
+      opacity: number;
+      y: number;
     };
     visible: {
-        opacity: number;
-        y: number;
-        scale: number;
-        transition: {
-            type: string;
-            stiffness: string;
-            delay: number;
-        };
+      opacity: number;
+      y: number;
+      scale: number;
+      transition: {
+        type: string;
+        stiffness: string;
+        delay: number;
+      };
     };
-}
-    slideUpBig: {
+  };
+  slideUpBig: {
     initial: {
-        opacity: number;
-        y: number;
+      opacity: number;
+      y: number;
     };
     visible: {
-        opacity: number;
-        y: number;
-        scale: number;
-        transition: {
-            type: string;
-            stiffness: string;
-            delay: number;
-        };
+      opacity: number;
+      y: number;
+      scale: number;
+      transition: {
+        type: string;
+        stiffness: string;
+        delay: number;
+      };
     };
-}
-    slideRight: {
+  };
+  slideRight: {
     initial: {
-        opacity: number;
-        x: number;
+      opacity: number;
+      x: number;
     };
     visible: {
-        opacity: number;
-        x: number;
+      opacity: number;
+      x: number;
     };
-}
-    isMobile: boolean
-}
+  };
+  isMobile: boolean;
+};
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
-    <div class="flex flex-col sm:flex-row items-center justify-center">
+  <div class="flex flex-col sm:flex-row items-center justify-center">
     <div class="flex flex-col items-center w-[50%]">
-    <div
+      <div
         v-motion
         :initial="slideDown.initial"
         :visible="slideDown.visible"
@@ -83,9 +83,14 @@ defineProps<Props>()
       </div>
     </div>
 
-    <Vue3Lottie  v-motion
-    :initial="slideRight.initial"
-    :visible="slideRight.visible"
-    :animationData="me" :height="isMobile ? 300 : 400" :width="isMobile ? 300 : 400"  class=" sm:w-[50%]" />
-    </div>
+    <Vue3Lottie
+      v-motion
+      :initial="slideRight.initial"
+      :visible="slideRight.visible"
+      :animationData="me"
+      :height="isMobile ? 300 : 400"
+      :width="isMobile ? 300 : 400"
+      class="sm:w-[50%]"
+    />
+  </div>
 </template>
