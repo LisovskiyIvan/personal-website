@@ -37,7 +37,7 @@ interface Obstacle extends GameObject {
 const sharkImages = [shark1, shark2, shark3, shark4, shark5, shark6, shark7, shark8];
 const crabImages = [crab1, crab2, crab3, crab4];
 const currentSharkFrame = ref(0);
-const sharkFrameInterval = 100; // Milliseconds between frame changes
+const sharkFrameInterval = 100; 
 let lastFrameTime = 0;
 
 const updateSharkAnimation = (timestamp: number) => {
@@ -80,6 +80,14 @@ const keys = ref({
   ArrowDown: false,
   ArrowLeft: false,
   ArrowRight: false,
+  w: false,
+  s: false,
+  a: false,
+  d: false,
+  ц: false,
+  ф: false,
+  ы: false,
+  в: false,
 });
 
 const handleKeyDown = (e: KeyboardEvent) => {
@@ -151,13 +159,13 @@ const update = (timestamp: number) => {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  if (keys.value.ArrowUp) player.value.y = Math.max(0, player.value.y - 5);
-  if (keys.value.ArrowDown) player.value.y = Math.min(370, player.value.y + 5);
-  if (keys.value.ArrowLeft) {
+  if (keys.value.ArrowUp || keys.value.w || keys.value.ц) player.value.y = Math.max(0, player.value.y - 5);
+  if (keys.value.ArrowDown || keys.value.s || keys.value.ы) player.value.y = Math.min(370, player.value.y + 5);
+  if (keys.value.ArrowLeft || keys.value.a || keys.value.ф) {
     player.value.x = Math.max(0, player.value.x - 5);
     player.value.direction = 1;
   }
-  if (keys.value.ArrowRight) {
+  if (keys.value.ArrowRight || keys.value.d || keys.value.в) {
     player.value.x = Math.min(760, player.value.x + 5);
     player.value.direction = -1;
   }
@@ -324,7 +332,7 @@ onUnmounted(() => {
       Обратно
     </RouterLink>
 
-      <h2 class="heading text-4xl mb-8 text-orange font-bold">Рыбная игра</h2>
+      <h2 class="heading text-4xl mb-8 text-orange font-bold">Акула и крабы</h2>
     <div class="relative">
       <canvas
         ref="canvasRef"
@@ -343,8 +351,8 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="mt-6 text-white text-center">
-      <p class="text-xl mb-2">Используйте стрелки для управления рыбкой</p>
-      <p class="text-orange">Собирайте синие пузыри и избегайте водорослей</p>
+      <p class="text-xl mb-2">Используйте стрелки или wasd для управления акулой</p>
+      <p class="text-orange">Собирайте синие пузыри и избегайте крабов</p>
     </div>
   </div>
 </template>
